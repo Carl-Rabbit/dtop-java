@@ -1,0 +1,8 @@
+server:
+  port: 8080
+
+grpc:
+  client:
+    deive-grpc-server:
+      host: localhost
+      port: 8081

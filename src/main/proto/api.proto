@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package grp.dtop.dtopui;
+
+import "message.proto";
+import "google/protobuf/empty.proto";
+
+service APIService {
+  rpc GetAllMachines (google.protobuf.Empty) returns (MachineArrMessage);
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package grp.dtop.dtopui;
+
+message DemoRequest {
+  string request = 1;
+}
+
+message DemoResponse {
+  string response = 1;
+}
+
+service DemoService {
+  rpc Echo (DemoRequest) returns(DemoResponse);
+}
