@@ -3,20 +3,18 @@ package grp.dtop.dtopui.servise;
 import com.google.protobuf.Empty;
 import grp.dtop.dtopui.GRPCServiceGrpc;
 import grp.dtop.dtopui.Message;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
 
-import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Service
 public class TestService {
 
-    @GrpcClient("cloud-grpc-server")
+
+    @GrpcClient("static://127.0.0.1:8080")
     private GRPCServiceGrpc.GRPCServiceBlockingStub blockingStub;
     private static final Logger logger = Logger.getLogger(TestService.class.getName());
 
