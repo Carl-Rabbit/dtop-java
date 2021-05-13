@@ -1,12 +1,8 @@
 server:
   port: 8082
-spring:
-  application:
-    name: cloud-grpc-client
+
 grpc:
   client:
-    cloud-grpc-server:
-      address: 'localhost:8080'
-      enableKeepAlive: true
-      keepAliveWithoutCalls: true
-      negotiationType: plaintext
+    GRPCService:
+      address: 'static://localhost:8080'
+      negotiationType: PLAINTEXT

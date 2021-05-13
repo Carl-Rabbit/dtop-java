@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package grp.dtop.dtopui;
+option java_package = "grp.dtop.dtopjava.proto";
 
 message StringMessage {
   string val = 1;
