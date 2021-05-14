@@ -15,4 +15,12 @@ public class TestGRPCService {
         Message.StringMessage response = stub.getAddr(Empty.newBuilder().build());
         return response.getVal();
     }
+
+    public String queryProfiling() {
+        Message.FetchRequestMessage request = Message.FetchRequestMessage.newBuilder().addRequestArr("Test Profiling").build();
+        Message.FetchReplyMessage reply = stub.profile(request);
+        System.out.println(reply.getMemUsageMessage().getMaxMem());
+        System.out.println(reply.getMemUsageMessage().getUsedMem());
+        return reply.getMemUsageMessage().toString();
+    }
 }

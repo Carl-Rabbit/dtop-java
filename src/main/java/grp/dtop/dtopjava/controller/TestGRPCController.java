@@ -16,4 +16,9 @@ public class TestGRPCController {
     public String getAddr() {
         return testGRPCService.getAddr();
     }
+
+    @GetMapping("api/test/grpc/profile")
+    public String queryProfiling() {
+        return testGRPCService.queryProfiling();
+    }
 }
