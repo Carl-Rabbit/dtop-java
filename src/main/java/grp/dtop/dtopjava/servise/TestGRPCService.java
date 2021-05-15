@@ -17,7 +17,12 @@ public class TestGRPCService {
     }
 
     public String queryProfiling() {
-        Message.FetchRequestMessage request = Message.FetchRequestMessage.newBuilder().addRequestArr("Test Profiling").build();
+        Message.FetchRequestMessage request = Message.FetchRequestMessage.newBuilder()
+                .addRequestArr("MEM_USAGE")
+                .addRequestArr("MEM_PER_PROC")
+                .addParamArr("")
+                .addParamArr("param1")
+                .build();
         Message.FetchReplyMessage reply = stub.profile(request);
         System.out.println(reply.getMemUsageMessage().getMaxMem());
         System.out.println(reply.getMemUsageMessage().getUsedMem());
