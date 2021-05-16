@@ -2,6 +2,7 @@ package grp.dtop.dtopjava.controller;
 
 import grp.dtop.dtopjava.servise.TestGRPCService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,5 +21,10 @@ public class TestGRPCController {
     @GetMapping("api/test/grpc/profile")
     public String queryProfiling() {
         return testGRPCService.queryProfiling();
+    }
+
+    @GetMapping("api/test/grpc/server_status")
+    public String getServerStatus(@RequestParam(value = "with_futures", required = false) boolean withFutures) {
+        return testGRPCService.getServerStatus(withFutures);
     }
 }

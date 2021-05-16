@@ -24,8 +24,16 @@ public class TestGRPCService {
                 .addParamArr("param1")
                 .build();
         Message.FetchReplyMessage reply = stub.profile(request);
-        System.out.println(reply.getMemUsageMessage().getMaxMem());
-        System.out.println(reply.getMemUsageMessage().getUsedMem());
         return reply.getMemUsageMessage().toString();
+    }
+
+    public String getServerStatus(boolean withFutures) {
+        Message.StringArrayMessage.Builder samBuilder = Message.StringArrayMessage.newBuilder();
+        if (withFutures) {
+            samBuilder.addArr("-wf");       // --with_futures
+        }
+        Message.ServerStatusMessage reply = stub.getServerStatus(samBuilder.build());
+        System.out.println(reply.toString());
+        return reply.toString();
     }
 }
