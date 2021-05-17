@@ -27,10 +27,13 @@ public class TestGRPCService {
         return reply.getMemUsageMessage().toString();
     }
 
-    public String getServerStatus(boolean withFutures) {
+    public String getServerStatus(boolean withFutures, boolean withFutureDesc) {
         Message.StringArrayMessage.Builder samBuilder = Message.StringArrayMessage.newBuilder();
         if (withFutures) {
             samBuilder.addArr("-wf");       // --with_futures
+        }
+        if (withFutureDesc) {
+            samBuilder.addArr("-wfd");
         }
         Message.ServerStatusMessage reply = stub.getServerStatus(samBuilder.build());
         System.out.println(reply.toString());

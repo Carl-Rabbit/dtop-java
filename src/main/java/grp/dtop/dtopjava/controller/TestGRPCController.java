@@ -24,7 +24,8 @@ public class TestGRPCController {
     }
 
     @GetMapping("api/test/grpc/server_status")
-    public String getServerStatus(@RequestParam(value = "with_futures", required = false) boolean withFutures) {
-        return testGRPCService.getServerStatus(withFutures);
+    public String getServerStatus(@RequestParam(value = "futures", required = false) boolean withFutures,
+                                  @RequestParam(value = "future_desc", required = false) boolean withFutureDesc) {
+        return testGRPCService.getServerStatus(withFutures, withFutureDesc);
     }
 }
