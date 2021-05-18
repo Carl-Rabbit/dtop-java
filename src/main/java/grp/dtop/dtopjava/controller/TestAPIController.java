@@ -18,4 +18,9 @@ public class TestAPIController {
                                   @RequestParam(value = "future_desc", required = false) boolean withFutureDesc) {
         return testAPIService.getClusterStatus();
     }
+
+    @GetMapping("api/test/grpc/cluster_aggregated_stats")
+    public String getAggregatedVirtualMemInfo() {
+        return testAPIService.getAggregatedVirtualMemInfo();
+    }
 }

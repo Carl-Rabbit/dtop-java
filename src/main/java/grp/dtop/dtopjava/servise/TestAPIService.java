@@ -24,4 +24,15 @@ public class TestAPIService {
         }
         return "{}";
     }
+
+    public String getAggregatedVirtualMemInfo() {
+        Message.FetchRequestMessage.Builder frmBuilder = Message.FetchRequestMessage.newBuilder();
+        Message.FetchReplyArrayMessage reply = stub.getAggregatedVirtualMemInfo(frmBuilder.build());
+        try {
+            return JsonFormat.printer().print(reply);
+        } catch (InvalidProtocolBufferException e) {
+            e.printStackTrace();
+        }
+        return "{}";
+    }
 }
