@@ -1,8 +1,11 @@
 server:
-  port: 8082
+  port: 8079
 
 grpc:
   client:
     GRPCService:
+      address: 'static://localhost:8080'
+      negotiationType: PLAINTEXT
+    APIService:
       address: 'static://localhost:8080'
       negotiationType: PLAINTEXT

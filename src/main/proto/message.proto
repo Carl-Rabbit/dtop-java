@@ -71,12 +71,28 @@ message FetchReplyMessage {
   MemUsageMessage mem_usage_message = 2;
   repeated string infos = 3;
 }
+
+message ServerStatusArrMessage {
+  repeated ServerStatusMessage server_status = 1;
+}
+
+message FetchReplyArrayMessage {
+  repeated FetchReplyMessage fetch_reply = 1;
+}
+
 message CpuMessage {
   int32 core_num = 1;
   repeated float usage_arr = 2;
 }
 
 message MemUsageMessage {
-  int64 max_mem = 1;
-  int64 used_mem = 2;
+  int64 total = 1;
+  int64 available = 2;
+  int64 used = 3;
+  int64 free = 4;
+  int64 active = 5;
+  int64 inactive = 6;
+  int64 buffers = 7;
+  int64 cached = 8;
+  int64 wired = 9;
 }
