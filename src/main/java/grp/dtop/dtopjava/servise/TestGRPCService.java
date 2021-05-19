@@ -39,4 +39,15 @@ public class TestGRPCService {
         System.out.println(reply.toString());
         return reply.toString();
     }
+
+    public String queryControl() {
+        Message.CommandArrayMessage.Builder camBuild = Message.CommandArrayMessage.newBuilder();
+        Message.CommandMessage cmdMsg = Message.CommandMessage.newBuilder()
+                .setWorkerName("Memory usage worker")
+                .setCmdType("PAUSE")
+                .build();
+        camBuild.addCommandArr(cmdMsg);
+        Message.StringArrayMessage reply = stub.control(camBuild.build());
+        return reply.toString();
+    }
 }
