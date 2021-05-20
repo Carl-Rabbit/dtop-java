@@ -1,9 +1,10 @@
 package grp.dtop.dtopjava.controller;
 
 import grp.dtop.dtopjava.servise.TestAPIService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import grp.dtop.dtopjava.vo.CommandVO;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class TestAPIController {
@@ -22,5 +23,10 @@ public class TestAPIController {
     @GetMapping("api/test/grpc/cluster_aggregated_stats")
     public String getAggregatedVirtualMemInfo() {
         return testAPIService.getAggregatedVirtualMemInfo();
+    }
+
+    @PostMapping("api/test/grpc/cluster_exec_cmd")
+    public String execClusterCommand(@RequestBody List<CommandVO> commandVOList) {
+        return testAPIService.execClusterCommand(commandVOList);
     }
 }

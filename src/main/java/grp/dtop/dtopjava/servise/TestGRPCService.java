@@ -47,7 +47,7 @@ public class TestGRPCService {
                 .setCmdType(command)
                 .build();
         camBuild.addCommandArr(cmdMsg);
-        Message.StringArrayMessage reply = stub.control(camBuild.build());
+        Message.StringArrayMessage reply = stub.execCommand(camBuild.build());
         return reply.toString();
     }
 }

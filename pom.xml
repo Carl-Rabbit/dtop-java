@@ -66,6 +66,15 @@
 			<artifactId>protobuf-java-util</artifactId>
 			<version>3.5.0</version>
 		</dependency>
+
+		<!-- Enable Lombok Begin -->
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.0</version>
+		</dependency>
+		<!-- Enable Lombok End -->
 	</dependencies>
 
 	<build>
