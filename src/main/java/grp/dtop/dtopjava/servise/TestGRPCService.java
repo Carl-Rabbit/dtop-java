@@ -40,11 +40,11 @@ public class TestGRPCService {
         return reply.toString();
     }
 
-    public String queryControl() {
+    public String queryControl(String workerName, String command) {
         Message.CommandArrayMessage.Builder camBuild = Message.CommandArrayMessage.newBuilder();
         Message.CommandMessage cmdMsg = Message.CommandMessage.newBuilder()
-                .setWorkerName("Memory usage worker")
-                .setCmdType("PAUSE")
+                .setWorkerName(workerName)
+                .setCmdType(command)
                 .build();
         camBuild.addCommandArr(cmdMsg);
         Message.StringArrayMessage reply = stub.control(camBuild.build());

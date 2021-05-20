@@ -28,4 +28,10 @@ public class TestGRPCController {
                                   @RequestParam(value = "future_desc", required = false) boolean withFutureDesc) {
         return testGRPCService.getServerStatus(withFutures, withFutureDesc);
     }
+
+    @GetMapping("api/test/grpc/control")
+    public String queryControl(@RequestParam("worker_name") String workerName,
+                               @RequestParam("command") String command) {
+        return testGRPCService.queryControl(workerName, command);
+    }
 }
