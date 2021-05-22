@@ -7,31 +7,31 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class TestGRPCController {
-    private final TestGRPCService testGRPCService;
-
-    public TestGRPCController(TestGRPCService testGRPCService) {
-        this.testGRPCService = testGRPCService;
-    }
-
-    @GetMapping("api/test/grpc/addr")
-    public String getAddr() {
-        return testGRPCService.getAddr();
-    }
-
-    @GetMapping("api/test/grpc/profile")
-    public String queryProfiling() {
-        return testGRPCService.queryProfiling();
-    }
-
-    @GetMapping("api/test/grpc/server_status")
-    public String getServerStatus(@RequestParam(value = "futures", required = false) boolean withFutures,
-                                  @RequestParam(value = "future_desc", required = false) boolean withFutureDesc) {
-        return testGRPCService.getServerStatus(withFutures, withFutureDesc);
-    }
-
-    @GetMapping("api/test/grpc/control")
-    public String queryControl(@RequestParam("worker_name") String workerName,
-                               @RequestParam("command") String command) {
-        return testGRPCService.queryControl(workerName, command);
-    }
+//    private final TestGRPCService testGRPCService;
+//
+//    public TestGRPCController(TestGRPCService testGRPCService) {
+//        this.testGRPCService = testGRPCService;
+//    }
+//
+//    @GetMapping("api/test/grpc/addr")
+//    public String getAddr() {
+//        return testGRPCService.getAddr();
+//    }
+//
+//    @GetMapping("api/test/grpc/profile")
+//    public String queryProfiling() {
+//        return testGRPCService.queryProfiling();
+//    }
+//
+//    @GetMapping("api/test/grpc/server_status")
+//    public String getServerStatus(@RequestParam(value = "futures", required = false) boolean withFutures,
+//                                  @RequestParam(value = "future_desc", required = false) boolean withFutureDesc) {
+//        return testGRPCService.getServerStatus(withFutures, withFutureDesc);
+//    }
+//
+//    @GetMapping("api/test/grpc/control")
+//    public String queryControl(@RequestParam("worker_name") String workerName,
+//                               @RequestParam("command") String command) {
+//        return testGRPCService.queryControl(workerName, command);
+//    }
 }
