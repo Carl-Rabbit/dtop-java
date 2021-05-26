@@ -6,9 +6,11 @@ import com.google.protobuf.util.JsonFormat;
 import grp.dtop.dtopjava.proto.APIServiceGrpc;
 import grp.dtop.dtopjava.proto.Message;
 import grp.dtop.dtopjava.vo.CommandVO;
+import grp.dtop.dtopjava.vo.FetchRequestVO;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -32,12 +34,15 @@ public class APIService {
         return "{}";
     }
 
-    public String getClusterMetric() {
+    public String getClusterMetric(FetchRequestVO[] fetchRequestVOArray) {
         Message.FetchRequestArrayMessage.Builder frmArrBuilder = Message.FetchRequestArrayMessage.newBuilder();
-        frmArrBuilder.addFetchRequestArr(Message.FetchRequestMessage.newBuilder()
-                .addFutureArr("MEM_USAGE")
-                .addFutureArr("MEM_PER_PROC")
-                .build());
+        for (FetchRequestVO fetchRequestVO : fetchRequestVOArray) {
+            Message.FetchRequestMessage.Builder frmBuilder = Message.FetchRequestMessage.newBuilder();
+            frmBuilder.setAddr(fetchRequestVO.getAddr());
+            frmBuilder.addAllFutureArr(Arrays.asList(fetchRequestVO.getFutureArr()));
+            frmBuilder.addAllParamArr(Arrays.asList(fetchRequestVO.getParamArr()));
+            frmArrBuilder.addFetchRequestArr(frmBuilder);
+        }
         Message.FetchReplyArrayMessage reply = stub.getClusterMetric(frmArrBuilder.build());
         try {
             return JsonFormat.printer().print(reply);

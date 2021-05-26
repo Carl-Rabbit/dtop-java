@@ -2,6 +2,7 @@ package grp.dtop.dtopjava.controller;
 
 import grp.dtop.dtopjava.servise.APIService;
 import grp.dtop.dtopjava.vo.CommandVO;
+import grp.dtop.dtopjava.vo.FetchRequestVO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public class APIController {
         return apiService.getClusterStatus(flags);
     }
 
-    @GetMapping("api/cluster_metric")
-    public String getClusterMetric() {
-        return apiService.getClusterMetric();
+    @PostMapping("api/cluster_metric")
+    public String getClusterMetric(@RequestBody FetchRequestVO[] requests) {
+        return apiService.getClusterMetric(requests);
     }
 
     @GetMapping("api/cluster_aggregated_stats")
