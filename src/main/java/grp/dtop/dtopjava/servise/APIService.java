@@ -67,7 +67,7 @@ public class APIService {
         Message.CommandArrayMessage.Builder camBuilder = Message.CommandArrayMessage.newBuilder();
         for (CommandVO commandVO : commandVOList) {
             camBuilder.addCommandArrBuilder()
-                    .setAddr(commandVO.getAddr())
+                    .setAddr(commandVO.getAddr() == null ? "" : commandVO.getAddr())
                     .setWorkerName(commandVO.getWorkerName())
                     .setCmdType(commandVO.getCmdType())
                     .build();
