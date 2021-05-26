@@ -26,28 +26,30 @@ public class APIService {
         Message.ServerStatusArrayMessage reply = stub.getClusterStatus(samBuilder.build());
         try {
             return JsonFormat.printer().print(reply);
-        } catch (InvalidProtocolBufferException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "{}";
     }
 
     public String getClusterMetric() {
-        Message.FetchRequestMessage.Builder frmBuilder = Message.FetchRequestMessage.newBuilder();
-        frmBuilder.addRequestArr("MEM_USAGE");
-        frmBuilder.addRequestArr("MEM_PER_PROC");
-        Message.FetchReplyArrayMessage reply = stub.getClusterMetric(frmBuilder.build());
+        Message.FetchRequestArrayMessage.Builder frmArrBuilder = Message.FetchRequestArrayMessage.newBuilder();
+        frmArrBuilder.addFetchRequestArr(Message.FetchRequestMessage.newBuilder()
+                .addFutureArr("MEM_USAGE")
+                .addFutureArr("MEM_PER_PROC")
+                .build());
+        Message.FetchReplyArrayMessage reply = stub.getClusterMetric(frmArrBuilder.build());
         try {
             return JsonFormat.printer().print(reply);
-        } catch (InvalidProtocolBufferException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return "{}";
     }
 
     public String getAggregatedVirtualMemInfo() {
-        Message.FetchRequestMessage.Builder frmBuilder = Message.FetchRequestMessage.newBuilder();
-        Message.FetchReplyArrayMessage reply = stub.getAggregatedVirtualMemInfo(frmBuilder.build());
+        Message.FetchRequestArrayMessage.Builder frmArrBuilder = Message.FetchRequestArrayMessage.newBuilder();
+        Message.FetchReplyArrayMessage reply = stub.getAggregatedVirtualMemInfo(frmArrBuilder.build());
         try {
             return JsonFormat.printer().print(reply);
         } catch (InvalidProtocolBufferException e) {
